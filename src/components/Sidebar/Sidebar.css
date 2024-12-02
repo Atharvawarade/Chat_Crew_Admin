@@ -1,0 +1,15 @@
+.sidebar {
+  width: 200px;
+  height: 100vh; /* Full height */
+  position: fixed; /* Fixes sidebar position */
+  top: 0;
+  left: 0;
+  background-color: #343a40; /* Dark background */
+  color: white;
+  transition: width 0.3s;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.sidebar.collapsed {
+  width: 60px; /* Collapsed width */
+}
