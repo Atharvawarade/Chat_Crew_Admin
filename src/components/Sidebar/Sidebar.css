@@ -13,3 +13,7 @@
 .sidebar.collapsed {
   width: 60px; /* Collapsed width */
 }
+
+.sidebar .btn-danger {
+  margin-top: 20px;
+}
