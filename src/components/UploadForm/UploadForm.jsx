@@ -69,8 +69,8 @@ const UploadForm = ({ onReturn, collectionName }) => {
 
   return (
     <div className="upload-form-container">
-      <button type="button" className="return-button" onClick={onReturn}>
-        Return to Dashboard
+      <button type="button" className="return-button " onClick={onReturn}>
+      Back
       </button>
       {customForm ? (
         <>{customForm}</>

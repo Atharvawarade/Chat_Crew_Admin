@@ -3,17 +3,26 @@ import { auth } from '../../firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import './Auth.css';
 
-const Login = () => {
+const Login = ({ onLoginFailed, onSwitchToRegister }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      
+      // Mock logic for setting collegeName, replace with actual logic
+      const collegeName = email.split('@')[0]; // Example: derive collegeName from email
+
+      // Save collegeName to sessionStorage
+      sessionStorage.setItem('collegeName', collegeName);
+
       alert('Login successful!');
     } catch (error) {
       alert('Login failed: ' + error.message);
+      onLoginFailed();
     }
   };
 
@@ -37,6 +46,9 @@ const Login = () => {
         />
         <button type="submit">Login</button>
       </form>
+      <button onClick={onSwitchToRegister} className="switch-button">
+        Switch to Register
+      </button>
     </div>
   );
 };
