@@ -1,0 +1,171 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #1d3557, #457b9d, #e63946);
+    background-size: 500% 500%;
+    animation: gradientBackground 8s ease infinite;
+}
+
+@keyframes gradientBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    25% {
+        background-position: 25% 50%;
+    }
+
+    50% {
+        background-position: 50% 50%;
+    }
+
+    75% {
+        background-position: 75% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.glass-container {
+    width: 80%;
+    height: 80vh;
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #f1faee;
+    font-size: 4vw;
+    font-weight: bold;
+}
+
+/* Existing styles remain unchanged */
+
+.two-logins{
+    margin-top: 5%;
+}
+
+.glass-heading {
+    position: absolute;
+    top: 5%; /* Adjusts the position at the top of the glass container */
+    width: 100%;
+    text-align: center;
+    color: #f1faee;
+    font-size: 3vw;
+    font-weight: bold;
+
+ /* Ensures it remains on top of other elements */
+}
+
+@media (max-width: 768px) {
+    .glass-heading {
+        font-size: 7vw; /* Adjust font size for smaller screens */
+        top: 10%;
+    }
+}
+
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2vw;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.5s ease-in-out;
+    /* Smooth color fill effect */
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 15px;
+    max-width: 70%;
+    aspect-ratio: 1;
+    margin: 0 auto;
+    /* Centers the container horizontally */
+}
+
+.image-container:hover {
+    background-color: rgba(255,
+            255,
+            255,
+            0.3);
+    /* Slightly brighter on hover */
+}
+
+.image-heading {
+    font-size: 3vh;
+    color: #f1faee;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    max-height: 80%;
+    /* Keeps the image proportionate within the container */
+}
+
+button {
+    margin-top: 1.5vh;
+    background-color: #e63946;
+    border-radius: 4px;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 1.8vh;
+    padding: 1vh 2vw;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+button span:after {
+    content: '»';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -15px;
+    transition: 0.5s;
+}
+
+button:hover span {
+    padding-right: 15px;
+}
+
+button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+@media (max-width: 768px) {
+    .glass-container {
+        font-size: 5vw;
+        height: 70vh;
+    }
+
+    .image-heading {
+        font-size: 3vh;
+    }
+
+    .btn-select {
+        font-size: 2.5vh;
+        padding: 2vh 4vw;
+    }
+}
