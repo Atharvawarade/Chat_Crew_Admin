@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Login and Registration</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+<body>
+  <div class="container">
+    <input type="checkbox" id="flip">
+    <div class="cover">
+      <div class="front">
+        <img src="../assets/College_Front.jpeg" alt="Front Image">
+        <div class="text">
+          <span class="text-1">Every new friend is a <br> new adventure</span>
+          <span class="text-2">Let's get connected</span>
+        </div>
+      </div>
+      <div class="back">
+        <img class="backImg" src="https://content.jdmagicbox.com/comp/jaipur/c2/0141px141.x141.170629000128.l5c2/catalogue/rajasthan-college-of-nursing-jaipur-thikariya-jaipur-tywe7x.jpg" alt="Back Image">
+        <div class="text">
+          <span class="text-1">Complete miles of journey <br> with one step</span>
+          <span class="text-2">Let's get started</span>
+        </div>
+      </div>
+    </div>
+    <div class="forms">
+        <div class="form-content">
+          <!-- Login Form -->
+          <div class="login-form">
+            <div class="title">Login</div>
+            <form id="loginForm">
+              <div class="input-boxes">
+                <div class="input-box">
+                  <i class="fas fa-envelope"></i>
+                  <input type="email" id="loginEmail" placeholder="Enter college email" required>
+                </div>
+                <div class="input-box">
+                  <i class="fas fa-lock"></i>
+                  <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                </div>
+                <div class="button input-box">
+                  <input type="submit" value="Login">
+                </div>
+                <div class="text sign-up-text">Don't have an account? <label for="flip">Register now</label></div>
+              </div>
+            </form>
+          </div>
+          <!-- Signup Form -->
+          <div class="signup-form">
+            <div class="title">Register</div>
+            <form id="registerForm">
+              <div class="input-boxes">
+                <div class="input-box">
+                  <i class="fas fa-user"></i>
+                  <input type="text" id="registerName" placeholder="Enter college name" required>
+                </div>
+                <div class="input-box">
+                  <i class="fas fa-envelope"></i>
+                  <input type="email" id="registerEmail" placeholder="Enter college email" required>
+                </div>
+                <div class="input-box">
+                  <i class="fas fa-lock"></i>
+                  <input type="password" id="registerPassword" placeholder="Enter your password" required>
+                </div>
+                
+                <div class="button input-box">
+                  <input type="submit" value="Signup">
+                </div>
+                <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script type="module" src="../js/script.js"></script>
+</body>
+</html>
