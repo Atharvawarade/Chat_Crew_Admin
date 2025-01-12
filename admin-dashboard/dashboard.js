@@ -20,35 +20,59 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
+// Inject the CSS file dynamically
+const cssLink = document.createElement("link");
+cssLink.rel = "stylesheet";
+cssLink.href = "dashboard.css"; // Path to your CSS file
+document.head.appendChild(cssLink);
+
 export default async function loadDashboard(container) {
   const html = `
     <h1 style="text-align: center; margin-bottom: 20px;">Database Summary</h1>
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-md-4">
-          <div class="card text-white bg-primary mb-3">
-            <div class="card-header">Main Nodes</div>
-            <div class="card-body">
-              <h5 class="card-title" id="mainNodes">0</h5>
-              <p class="card-text">Total number of main nodes in the database.</p>
+        <div class="col-md-4 mb-3">
+          <div class="card">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="../assets/Institutions.jpg" class="img-fluid rounded-start" alt="Main Nodes Icon">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Institutions Registered</h5>
+                  <h3 class="card-text" id="innerNodesColleges">0</h3>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card text-white bg-success mb-3">
-            <div class="card-header">Inner Nodes</div>
-            <div class="card-body">
-              <h5 class="card-title" id="innerNodes">0</h5>
-              <p class="card-text">Total number of inner nodes under all main nodes.</p>
+        <div class="col-md-4 mb-3">
+          <div class="card">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="../assets/Forms.jpg" class="img-fluid rounded-start" alt="Inner Nodes Icon">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Types of Documents</h5>
+                  <h3 class="card-text" id="mainNodesMinusOne">0</h3>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card text-white bg-danger mb-3">
-            <div class="card-header">Keys</div>
-            <div class="card-body">
-              <h5 class="card-title" id="keysCount">0</h5>
-              <p class="card-text">Total number of keys in the database.</p>
+        <div class="col-md-4 mb-3">
+          <div class="card">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="../assets/Scholarships.jpg" class="img-fluid rounded-start" alt="Keys Icon">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Scholarships</h5>
+                  <h3 class="card-text" id="innerNodesScholarships">0</h3>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -65,29 +89,22 @@ export default async function loadDashboard(container) {
     if (snapshot.exists()) {
       const data = snapshot.val();
 
-      let mainNodes = 0;
-      let innerNodes = 0;
-      let keysCount = 0;
+      // 1. Count inner nodes inside "CollegesData"
+      const collegesData = data.CollegesData || {};
+      const innerNodesColleges = Object.keys(collegesData).length;
 
-      // Traverse through the data to calculate statistics
-      Object.entries(data).forEach(([mainKey, mainValue]) => {
-        mainNodes++;
-        if (typeof mainValue === "object" && mainValue !== null) {
-          innerNodes += Object.keys(mainValue).length;
-          keysCount += Object.entries(mainValue).reduce(
-            (count, [, innerValue]) =>
-              count + (typeof innerValue === "object" ? Object.keys(innerValue).length : 1),
-            0
-          );
-        } else {
-          keysCount++;
-        }
-      });
+      // 2. Calculate main nodes - 1
+      const totalMainNodes = Object.keys(data).length;
+      const mainNodesMinusOne = totalMainNodes - 1;
+
+      // 3. Count inner nodes inside "ScholarshipData"
+      const scholarshipData = data.ScholarshipData || {};
+      const innerNodesScholarships = Object.keys(scholarshipData).length;
 
       // Update card values
-      document.getElementById("mainNodes").innerText = mainNodes;
-      document.getElementById("innerNodes").innerText = innerNodes;
-      document.getElementById("keysCount").innerText = keysCount;
+      document.getElementById("innerNodesColleges").innerText = innerNodesColleges;
+      document.getElementById("mainNodesMinusOne").innerText = mainNodesMinusOne;
+      document.getElementById("innerNodesScholarships").innerText = innerNodesScholarships;
     } else {
       console.log("No data available in the database.");
     }

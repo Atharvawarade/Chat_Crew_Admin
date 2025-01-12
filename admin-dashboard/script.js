@@ -1,4 +1,7 @@
 import loadDashboard from "./components/dashboard.js";
+import loadUsers from "./components/users.js";
+import loadSettings from "./components/settings.js";
+import loadReports from "./components/reports.js";
 
 const sidebarLinks = document.querySelectorAll("#sidebar a");
 const dynamicContent = document.getElementById("dynamicContent");
@@ -10,8 +13,9 @@ function setActiveLink(activeLink) {
 }
 
 // Function to load the respective component
-function loadPage(page) {
+function loadPage(page, link) {
   dynamicContent.innerHTML = ""; // Clear existing content
+  setActiveLink(link); // Highlight the active sidebar link
   switch (page) {
     case "dashboard":
       loadDashboard(dynamicContent);
@@ -34,11 +38,12 @@ function loadPage(page) {
 sidebarLinks.forEach((link) => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
-    const page = link.getAttribute("data-page");
-    setActiveLink(link);
-    loadPage(page);
+    const page = link.getAttribute("data-page").replace(".js", ""); // Extract page name
+    loadPage(page, link);
   });
 });
 
 // Load default page
-loadPage("dashboard");
+const defaultPage = "dashboard";
+const defaultLink = document.querySelector(`[data-page="${defaultPage}.js"]`);
+loadPage(defaultPage, defaultLink);

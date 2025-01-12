@@ -1,0 +1,16 @@
+.card img {
+    object-fit: cover; /* Ensures the image covers its container proportionally */
+    height: 100%;     /* Makes the image take up the full height of its parent */
+    width: 100%;      /* Makes the image take up the full width of its parent */
+  }
+  .card {
+    overflow: hidden; /* Ensures no content overflows the card boundary */
+    background: linear-gradient(-120deg,#A8DADC,#F1FAEE);
+  }
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+    height: 100%; /* Ensures card-body takes up the remaining space in the card */
+  }
+
