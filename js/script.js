@@ -29,39 +29,37 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
   try {
     // Firebase Login
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
     alert("Login Successful!");
-    // Redirect to dashboard
-    window.location.href = "../college-dashboard.html";
+
+    // Check if the user is an admin or a college user
+    if (email.includes("admin@dte")) {
+      // Redirect admin to admin dashboard
+      window.location.href = "../admin-dashboard/index.html";
+    } else {
+      // Redirect college user to college dashboard
+      window.location.href = "../college-dashboard/college-dashboard.html";
+    }
   } catch (error) {
     alert(`Login Failed: ${error.message}`);
   }
 });
 
 // Register Form Submission
-document
-  .getElementById("registerForm")
-  .addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const name = document.getElementById("registerName").value;
-    const email = document.getElementById("registerEmail").value;
-    const password = document.getElementById("registerPassword").value;
+document.getElementById("registerForm")?.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const name = document.getElementById("registerName").value;
+  const email = document.getElementById("registerEmail").value;
+  const password = document.getElementById("registerPassword").value;
 
-    try {
-      // Firebase Signup
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      alert("Signup Successful!");
-      // Automatically log in and redirect to dashboard
-      window.location.href = "../college-dashboard.html";
-    } catch (error) {
-      alert(`Signup Failed: ${error.message}`);
-    }
-  });
+  try {
+    // Firebase Signup
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    alert("Signup Successful!");
+
+    // Automatically log in and redirect to college dashboard
+    window.location.href = "../college-dashboard/college-dashboard.html";
+  } catch (error) {
+    alert(`Signup Failed: ${error.message}`);
+  }
+});
