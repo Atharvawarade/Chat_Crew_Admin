@@ -59,7 +59,9 @@ body {
 }
 
 .sidebar ul li a:hover {
-    background-color: #495057;
+    background-color: #A8DADC;
+    border-radius: 5px;
+    color: black !important;
 }
 
 .navbar {

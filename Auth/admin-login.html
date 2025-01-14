@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <title>Administrative Login</title>
-    <link rel="stylesheet" href="../css/login.css">
-    <!-- Fontawesome CDN Link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <title>Administrative Login</title>
+  <link rel="stylesheet" href="../css/login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <body>
   <div class="container">
     <div class="cover">
@@ -21,7 +20,6 @@
     </div>
     <div class="forms">
       <div class="form-content">
-        <!-- Login Form -->
         <div class="login-form">
           <div class="title">Administrative Login</div>
           <form id="loginForm">
@@ -56,21 +54,19 @@
     </div>
   </div>
 
-  <!-- JavaScript -->
   <script type="module" src="../js/script.js"></script>
   <script>
-    // Function to validate email
     function validateEmail() {
       const emailInput = document.getElementById("loginEmail");
       const passwordInput = document.getElementById("loginPassword");
-      const emailPattern = /admin@dte/; // Pattern to check if 'admin@dte' is present
+      const emailPattern = /admin@dte/;
 
       if (emailPattern.test(emailInput.value)) {
-        passwordInput.disabled = false; // Enable password field
-        emailInput.style.borderColor = "green"; // Indicate valid email
+        passwordInput.disabled = false;
+        emailInput.style.borderColor = "green";
       } else {
-        passwordInput.disabled = true; // Disable password field
-        emailInput.style.borderColor = "red"; // Indicate invalid email
+        passwordInput.disabled = true;
+        emailInput.style.borderColor = "red";
       }
     }
   </script>

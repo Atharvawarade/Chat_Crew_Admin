@@ -1,16 +1,138 @@
-.card img {
-    object-fit: cover; /* Ensures the image covers its container proportionally */
-    height: 100%;     /* Makes the image take up the full height of its parent */
-    width: 100%;      /* Makes the image take up the full width of its parent */
-  }
-  .card {
+.card {
+    position: relative;
     overflow: hidden; /* Ensures no content overflows the card boundary */
-    background: linear-gradient(-120deg,#A8DADC,#F1FAEE);
+    /* background: linear-gradient(-120deg, #A8DADC, #F1FAEE); */
+    transition: all 0.3s ease-out; /* Smooth transition for hover effects */
+    border-radius: 8px; /* Optional for a softer card design */
+    /* padding: 20px; */
+    border: 1.5px solid #1D3557;
   }
+  
+  .card img {
+    object-fit: cover; /* Ensures the image covers its container proportionally */
+    height: 100%; /* Makes the image take up the full height of its parent */
+    width: 100%; /* Makes the image take up the full width of its parent */
+    border-radius: 4px;
+  }
+  
   .card-body {
     display: flex;
     flex-direction: column;
     justify-content: center; /* Centers content vertically */
     height: 100%; /* Ensures card-body takes up the remaining space in the card */
   }
-
+  
+  .card:hover {
+    cursor: pointer;
+    transform: translateY(-5px); /* Slightly lifts the card */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Adds a shadow for emphasis */
+    
+  }
+  
+  .card:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -16px;
+    right: -16px;
+    background: #1D3557;
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
+    transform: scale(1);
+    transform-origin: 50% 50%;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .card:hover:before {
+    transform: scale(21);
+  }
+  
+  .card .go-corner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    background-color: #1D3557;
+    border-radius: 0 4px 0 32px;
+  }
+  
+  .card .go-arrow {
+    margin-top: -4px;
+    margin-right: -4px;
+    color: white;
+    font-family: courier, sans-serif;
+    font-size: 20px;
+  }
+  
+  .card:hover h5,
+  .card:hover h3 {
+    color: #ffffff; /* Changes text color on hover */
+    transition: all 0.3s ease-out;
+  }
+  
+  .modal-content {
+    background-color: #f1f8ff; /* Soft blue background */
+    border-radius: 8px;
+    border: 2px solid #1D3557; /* Accent color */
+  }
+  
+  .modal-header {
+    background-color: #1D3557; /* Header background */
+    color: #ffffff; /* Text color */
+    border-bottom: 2px solid #1D3557; /* Subtle darker accent */
+  }
+  
+  .modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1rem;
+    text-align: left;
+  }
+  
+  .table thead {
+    background-color: #1D3557; /* Accent color */
+    color: white;
+  }
+  
+  .table th,
+  .table td {
+    padding: 10px;
+    border: 1px solid #dddddd;
+  }
+  
+  .table tbody tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+  
+  /* .table tbody tr:hover {
+    background-color: #A8DADC; /* Light teal for hover effect */
+  
+  
+  .btn-close {
+    background-color: #ffffff; /* Red close button */
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+  }
+  
+  .btn-close:hover {
+    background-color: #ff4d4d;
+  }
+  

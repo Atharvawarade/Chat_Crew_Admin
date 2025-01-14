@@ -1,5 +1,5 @@
 import loadDashboard from "./components/dashboard.js";
-import loadUsers from "./components/users.js";
+import loadinstitutions from "./components/institutions.js";
 import loadSettings from "./components/settings.js";
 import loadReports from "./components/reports.js";
 
@@ -20,8 +20,8 @@ function loadPage(page, link) {
     case "dashboard":
       loadDashboard(dynamicContent);
       break;
-    case "users":
-      loadUsers(dynamicContent);
+    case "institutions":
+      loadinstitutions(dynamicContent);
       break;
     case "settings":
       loadSettings(dynamicContent);

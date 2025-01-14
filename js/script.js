@@ -3,7 +3,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebas
 import {
   getAuth,
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
 } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
 
 // Firebase configuration
@@ -30,36 +31,40 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   try {
     // Firebase Login
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    alert("Login Successful!");
+    const user = userCredential.user;
 
-    // Check if the user is an admin or a college user
+    // Check if user is admin
     if (email.includes("admin@dte")) {
-      // Redirect admin to admin dashboard
-      window.location.href = "../admin-dashboard/index.html";
+      sessionStorage.setItem("isAdminLoggedIn", "true");
+      alert("Admin Login Successful!");
+      window.location.href = "../admin-dashboard/index.html"; // Redirect to dashboard
     } else {
-      // Redirect college user to college dashboard
-      window.location.href = "../college-dashboard/college-dashboard.html";
+      alert("Access Denied: You are not an admin.");
     }
   } catch (error) {
     alert(`Login Failed: ${error.message}`);
   }
 });
 
-// Register Form Submission
-document.getElementById("registerForm")?.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const name = document.getElementById("registerName").value;
-  const email = document.getElementById("registerEmail").value;
-  const password = document.getElementById("registerPassword").value;
+// Session Validation for Admin Dashboard
+if (window.location.pathname.includes("admin-dashboard")) {
+  onAuthStateChanged(auth, (user) => {
+    const isAdminLoggedIn = sessionStorage.getItem("isAdminLoggedIn") === "true";
+    if (!user || !isAdminLoggedIn) {
+      alert("Access Denied: Please log in as admin.");
+      window.location.href = "../Auth/admin-login.html"; // Redirect to login page
+    }
+  });
+}
 
+// Logout Functionality (Optional)
+document.getElementById("logoutButton")?.addEventListener("click", async () => {
   try {
-    // Firebase Signup
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    alert("Signup Successful!");
-
-    // Automatically log in and redirect to college dashboard
-    window.location.href = "../college-dashboard/college-dashboard.html";
+    await signOut(auth);
+    sessionStorage.removeItem("isAdminLoggedIn");
+    alert("Logout Successful!");
+    window.location.href = "../Auth/admin-login.html"; // Redirect to login page
   } catch (error) {
-    alert(`Signup Failed: ${error.message}`);
+    alert(`Logout Failed: ${error.message}`);
   }
 });

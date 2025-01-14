@@ -19,12 +19,8 @@
 
       .sidebar {
         height: 100vh;
-        background-color: #343a40;
+        background-color: #1d3557;
       }
-
-      /* .sidebar.collapsed {
-        width: 50px;
-      } */
 
       .main-content.expanded {
         margin-left: 50px;
@@ -39,24 +35,19 @@
           <h4 class="text-center py-3">Admin Panel</h4>
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link text-white" href="#" data-page="dashboard.js"
-                >Dashboard</a
-              >
+              <a class="nav-link text-white" href="#" data-page="dashboard.js">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#" data-page="users.js"
-                >Users</a
-              >
+              <a class="nav-link text-white" href="#" data-page="institutions.js">Institutions</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#" data-page="settings.js"
-                >Settings</a
-              >
+              <a class="nav-link text-white" href="#" data-page="settings.js">Settings</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#" data-page="reports.js"
-                >Reports</a
-              >
+              <a class="nav-link text-white" href="#" data-page="reports.js">Reports</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#" id="logoutButton">Logout</a>
             </li>
           </ul>
         </div>
@@ -89,7 +80,7 @@
                     <a class="nav-link" href="#">Messages</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
+                    <a class="nav-link" href="#" id="logoutButtonNavbar">Logout</a>
                   </li>
                 </ul>
               </div>
@@ -159,6 +150,21 @@
           loadContent(page, link); // Load the requested page
         });
       });
+
+      // Logout Functionality
+      const logoutButtons = document.querySelectorAll("#logoutButton, #logoutButtonNavbar");
+      logoutButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          sessionStorage.removeItem("isAdminLoggedIn"); // End session
+          window.location.href = "../Auth/admin-login.html"; // Redirect to login page
+        });
+      });
+
+      // Check if admin is logged in
+      if (!sessionStorage.getItem("isAdminLoggedIn")) {
+        alert("Access Denied: Please log in first.");
+        window.location.href = "../Auth/admin-login.html"; // Redirect to login page
+      }
     </script>
   </body>
 </html>
