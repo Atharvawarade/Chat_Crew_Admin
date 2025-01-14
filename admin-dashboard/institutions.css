@@ -2,21 +2,46 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+}
 
-  .modal-body{
+.modal-body {
     background-color: white;
-  }
-  
-  /* Coolinput Styling */
+}
+
+.right-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10%;
+    justify-content: space-between;
+}
+
+.search_button {
+    display: flex;
+    flex-direction: column;
+    position: static;
+}
+
+.search_button input[type=text].input {
+    padding: 5px 11px;
+    /* font-size: 0.75rem; */
+    border: 2px #1D3557 solid;
+    border-radius: 5px;
+}
+
+.add-college-btn{
+    width: 10vw;
+    height: auto;
+ 
+}
+
+/* Coolinput Styling */
 .coolinput {
     display: flex;
     flex-direction: column;
-
     position: static;
-  }
-  
-  .coolinput label.text {
+}
+
+.coolinput label.text {
     font-size: 1rem;
     color: #1D3557;
     font-weight: 700;
@@ -26,17 +51,22 @@
     padding: 0 3px;
     background: #ffffff;
     width: fit-content;
-  }
-  
-  .coolinput input[type=text].input {
+}
+
+.coolinput input[type=text].input {
     padding: 11px 10px;
     font-size: 1rem;
     border: 2px #1D3557 solid;
     border-radius: 5px;
     /* background: #e8e8e8; */
-  }
-  
-  .coolinput input[type=text].input:focus {
+}
+
+.coolinput input[type=text].input:focus {
     outline: none;
-  }
-  
+}
+
+td .action_buttons{
+    gap: 10%;
+    align-items: center;
+    justify-content: space-between;
+}

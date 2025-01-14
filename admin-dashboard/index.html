@@ -9,22 +9,13 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
     <style>
-      .sidebar .nav-link.active {
-        background-color: white !important;
-        color: black !important;
-        font-weight: bold;
-        border-radius: 5px;
-      }
-
-      .sidebar {
-        height: 100vh;
-        background-color: #1d3557;
-      }
-
-      .main-content.expanded {
-        margin-left: 50px;
-      }
+      
     </style>
   </head>
   <body>
@@ -35,19 +26,54 @@
           <h4 class="text-center py-3">Admin Panel</h4>
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link text-white" href="#" data-page="dashboard.js">Dashboard</a>
+              <a
+                class="nav-link text-white d-flex align-items-center justify-content-start"
+                href="#"
+                data-page="dashboard.js"
+              >
+                <i class="fas fa-tachometer-alt me-2"></i>
+                <span class="flex-grow-1 text-center">Dashboard</span>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#" data-page="institutions.js">Institutions</a>
+              <a
+                class="nav-link text-white d-flex align-items-center justify-content-start"
+                href="#"
+                data-page="institutions.js"
+              >
+                <i class="fas fa-university me-2"></i>
+                <span class="flex-grow-1 text-center">Institutions</span>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#" data-page="settings.js">Settings</a>
+              <a
+                class="nav-link text-white d-flex align-items-center justify-content-start"
+                href="#"
+                data-page="settings.js"
+              >
+                <i class="fas fa-cogs me-2"></i>
+                <span class="flex-grow-1 text-center">Settings</span>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#" data-page="reports.js">Reports</a>
+              <a
+                class="nav-link text-white d-flex align-items-center justify-content-start"
+                href="#"
+                data-page="reports.js"
+              >
+                <i class="fas fa-file-alt me-2"></i>
+                <span class="flex-grow-1 text-center">Reports</span>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#" id="logoutButton">Logout</a>
+              <a
+                class="nav-link text-white d-flex align-items-center justify-content-start"
+                href="#"
+                id="logoutButton"
+              >
+                <i class="fas fa-sign-out-alt me-2"></i>
+                <span class="flex-grow-1 text-center">Logout</span>
+              </a>
             </li>
           </ul>
         </div>
@@ -80,7 +106,9 @@
                     <a class="nav-link" href="#">Messages</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#" id="logoutButtonNavbar">Logout</a>
+                    <a class="nav-link"  id="logoutButtonNavbar"
+                      >Logout</a
+                    >
                   </li>
                 </ul>
               </div>
@@ -152,7 +180,9 @@
       });
 
       // Logout Functionality
-      const logoutButtons = document.querySelectorAll("#logoutButton, #logoutButtonNavbar");
+      const logoutButtons = document.querySelectorAll(
+        "#logoutButton, #logoutButtonNavbar"
+      );
       logoutButtons.forEach((button) => {
         button.addEventListener("click", () => {
           sessionStorage.removeItem("isAdminLoggedIn"); // End session

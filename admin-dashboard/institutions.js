@@ -22,16 +22,20 @@ cssLink.rel = "stylesheet";
 cssLink.href = "institutions.css"; // Path to your CSS file
 document.head.appendChild(cssLink);
 
-
 export default function loadInstitutions(container) {
   // Initial HTML structure for the table
   let html = `
-    
     <div class="container">
-    <div class="header-container">
-      <h1 class="header-title">Colleges Data</h1>
-      <button class="btn btn-success btn-sm add-college-btn" data-bs-toggle="modal" data-bs-target="#addCollegeModal">Add College</button>
-    </div>
+      <div class="header-container">
+         <h4 class="header-title">Colleges Data</h4>
+        <div class="right-buttons">
+          <div class="search_button">
+            
+            <input type="text" id="searchInstitutions" class="input" placeholder="Search institutions...">
+          </div>
+          <button class="btn btn-success add-college-btn" data-bs-toggle="modal" data-bs-target="#addCollegeModal">Add College</button>
+        </div>
+      </div>
       <div class="row">
         <div class="col-md-12">
           <table class="table table-striped">
@@ -52,71 +56,69 @@ export default function loadInstitutions(container) {
 
     <!-- Modal for Adding College -->
     <div class="modal fade" id="addCollegeModal" tabindex="-1" aria-labelledby="addCollegeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addCollegeModalLabel">Add College</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form id="addCollegeForm">
-          <div class="row g-3">
-            <!-- Institution Name -->
-            <div class="col-md-12">
-              <div class="coolinput">
-                <label for="institutionName" class="text">Institution Name:</label>
-                <input type="text" placeholder="Enter institution name" id="institutionName" class="input" required>
-              </div>
-            </div>
-
-            <!-- Email and Principal Name -->
-            <div class="col-md-6">
-              <div class="coolinput">
-                <label for="email" class="text">Email:</label>
-                <input type="text" placeholder="Enter email" id="email" class="input" required>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="coolinput">
-                <label for="principalName" class="text">Principal Name:</label>
-                <input type="text" placeholder="Enter principal name" id="principalName" class="input" required>
-              </div>
-            </div>
-
-            <!-- AISHE Code and AICTE Code -->
-            <div class="col-md-6">
-              <div class="coolinput">
-                <label for="aisheCode" class="text">AISHE Code:</label>
-                <input type="text" placeholder="Enter AISHE code" id="aisheCode" class="input" required>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="coolinput">
-                <label for="aicteCode" class="text">AICTE Code:</label>
-                <input type="text" placeholder="Enter AICTE code" id="aicteCode" class="input" required>
-              </div>
-            </div>
-
-            <!-- Location -->
-            <div class="col-md-12">
-              <div class="coolinput">
-                <label for="location" class="text">Location:</label>
-                <input type="text" placeholder="Enter location" id="location" class="input" required>
-              </div>
-            </div>
+      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addCollegeModalLabel">Add College</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
+          <div class="modal-body">
+            <form id="addCollegeForm">
+              <div class="row g-3">
+                <!-- Institution Name -->
+                <div class="col-md-12">
+                  <div class="coolinput">
+                    <label for="institutionName" class="text">Institution Name:</label>
+                    <input type="text" placeholder="Enter institution name" id="institutionName" class="input" required>
+                  </div>
+                </div>
 
-          <!-- Submit Button -->
-          <div class="mt-3">
-            <button type="submit" class="btn btn-primary w-100">Add College</button>
+                <!-- Email and Principal Name -->
+                <div class="col-md-6">
+                  <div class="coolinput">
+                    <label for="email" class="text">Email:</label>
+                    <input type="text" placeholder="Enter email" id="email" class="input" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="coolinput">
+                    <label for="principalName" class="text">Principal Name:</label>
+                    <input type="text" placeholder="Enter principal name" id="principalName" class="input" required>
+                  </div>
+                </div>
+
+                <!-- AISHE Code and AICTE Code -->
+                <div class="col-md-6">
+                  <div class="coolinput">
+                    <label for="aisheCode" class="text">AISHE Code:</label>
+                    <input type="text" placeholder="Enter AISHE code" id="aisheCode" class="input" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="coolinput">
+                    <label for="aicteCode" class="text">AICTE Code:</label>
+                    <input type="text" placeholder="Enter AICTE code" id="aicteCode" class="input" required>
+                  </div>
+                </div>
+
+                <!-- Location -->
+                <div class="col-md-12">
+                  <div class="coolinput">
+                    <label for="location" class="text">Location:</label>
+                    <input type="text" placeholder="Enter location" id="location" class="input" required>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="mt-3">
+                <button type="submit" class="btn btn-primary w-100">Add College</button>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
-
   `;
 
   container.innerHTML = html;
@@ -140,12 +142,30 @@ export default function loadInstitutions(container) {
               <td>${index++}</td>
               <td>${key}</td>
               <td>
-                <button class="btn btn-primary btn-sm" onclick="editCollege('${key}')">Edit</button>
-                <button class="btn btn-danger btn-sm" onclick="deleteCollege('${key}')">Delete</button>
+               <div class="action_buttons">
+                <button class="btn btn-sm" onclick="editCollege('${key}')">View Profile</button>
+                <button class="btn btn-sm" onclick="deleteCollege('${key}')">Delete</button>
+               </div>
               </td>
             </tr>
           `;
           tableBody.innerHTML += row;
+        });
+
+        // Add search functionality
+        const searchBox = document.getElementById("searchInstitutions");
+        searchBox.addEventListener("input", () => {
+          const filter = searchBox.value.toLowerCase();
+          const rows = tableBody.getElementsByTagName("tr");
+
+          Array.from(rows).forEach((row) => {
+            const institutionName = row.cells[1].innerText.toLowerCase();
+            if (institutionName.includes(filter)) {
+              row.style.display = "";
+            } else {
+              row.style.display = "none";
+            }
+          });
         });
       } else {
         alert("No data found!");

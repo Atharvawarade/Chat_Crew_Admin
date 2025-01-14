@@ -110,10 +110,14 @@
     color: white;
   }
   
-  .table th,
+  .table th{
+    padding: 10px;
+    border: 1px solid #ffffff;
+  }
+
   .table td {
     padding: 10px;
-    border: 1px solid #dddddd;
+    border: 1px solid #1D3557;
   }
   
   .table tbody tr:nth-child(even) {

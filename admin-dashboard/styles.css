@@ -1,17 +1,18 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #A8DADC;
+    background-color: #FFFFFF;
 }
 
 .sidebar {
     height: 100vh;
     position: sticky;
     top: 0;
+    background-color: #1D3557;
     transition: all 0.3s ease;
 }
 
 .sidebar.collapsed {
-    width: 0;
+    width: 60px; /* Set a smaller width for collapsed state */
     overflow: hidden;
     padding: 0;
 }
@@ -32,48 +33,51 @@ body {
 }
 
 .sidebar ul li a:hover {
-    background-color: #495057;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    color: black !important;
+}
+
+.sidebar .nav-link {
+    display: flex;
+    align-items: center;
+    transition: padding 0.3s ease;
+}
+
+.sidebar .nav-link i {
+    font-size: 1.5rem;
+}
+
+.sidebar .nav-link span {
+    margin-left: 10px;
+}
+
+.sidebar.collapsed .nav-link span {
+    display: none; /* Hide text */
+}
+
+.sidebar .nav-link.active {
+    background-color: white !important;
+    color: black !important;
+    font-weight: bold;
+    border-radius: 5px;
 }
 
 .main-content {
     transition: margin-left 0.3s ease;
 }
 
-.sidebar {
-    background: #1D3557;
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar ul li {
-    padding: 10px;
-}
-
-.sidebar ul li a {
-    text-decoration: none;
-    color: white;
-    display: block;
-}
-
-.sidebar ul li a:hover {
-    background-color: #A8DADC;
-    border-radius: 5px;
-    color: black !important;
+.main-content.expanded {
+    margin-left: 60px; /* Adjust for collapsed sidebar width */
 }
 
 .navbar {
     margin-left: -0.9% !important;
     margin-right: -0.9% !important;
-    /* border: 1px solid green; */
     background: #F1FAEE;
 }
 
-.btn{
+.btn {
     background: #1D3557 !important;
     color: #FFFFFF !important;
 }
-
-
