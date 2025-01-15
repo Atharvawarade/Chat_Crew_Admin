@@ -1,33 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Login and Registration</title>
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/login.css" />
     <!-- Fontawesome CDN Link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
-<body>
-  <div class="container">
-    <input type="checkbox" id="flip">
-    <div class="cover">
-      <div class="front">
-        <img src="../assets/College_Front.jpeg" alt="Front Image">
-        <div class="text">
-          <span class="text-1">Every new friend is a <br> new adventure</span>
-          <span class="text-2">Let's get connected</span>
+  <body>
+    <div class="container">
+      <input type="checkbox" id="flip" />
+      <div class="cover">
+        <div class="front">
+          <img src="../assets/College_Front.jpeg" alt="Front Image" />
+          <div class="text">
+            <span class="text-1"
+              >Every new friend is a <br />new adventure</span
+            >
+            <span class="text-2">Let's get connected</span>
+          </div>
+        </div>
+        <div class="back">
+          <img
+            class="backImg"
+            src="https://content.jdmagicbox.com/comp/jaipur/c2/0141px141.x141.170629000128.l5c2/catalogue/rajasthan-college-of-nursing-jaipur-thikariya-jaipur-tywe7x.jpg"
+            alt="Back Image"
+          />
+          <div class="text">
+            <span class="text-1"
+              >Complete miles of journey <br />with one step</span
+            >
+            <span class="text-2">Let's get started</span>
+          </div>
         </div>
       </div>
-      <div class="back">
-        <img class="backImg" src="https://content.jdmagicbox.com/comp/jaipur/c2/0141px141.x141.170629000128.l5c2/catalogue/rajasthan-college-of-nursing-jaipur-thikariya-jaipur-tywe7x.jpg" alt="Back Image">
-        <div class="text">
-          <span class="text-1">Complete miles of journey <br> with one step</span>
-          <span class="text-2">Let's get started</span>
-        </div>
-      </div>
-    </div>
-    <div class="forms">
+      <div class="forms">
         <div class="form-content">
           <!-- Login Form -->
           <div class="login-form">
@@ -36,49 +47,143 @@
               <div class="input-boxes">
                 <div class="input-box">
                   <i class="fas fa-envelope"></i>
-                  <input type="email" id="loginEmail" placeholder="Enter college email" required>
+                  <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="Enter college email"
+                    required
+                  />
                 </div>
                 <div class="input-box">
                   <i class="fas fa-lock"></i>
-                  <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                  <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Enter your password"
+                    required
+                  />
                 </div>
                 <div class="button input-box">
-                  <input type="submit" value="Login">
+                  <input type="submit" value="Login" />
                 </div>
-                <div class="text sign-up-text">Don't have an account? <label for="flip">Register now</label></div>
+                <div class="text sign-up-text">
+                  Don't have an account? <label for="flip">Register now</label>
+                </div>
               </div>
             </form>
           </div>
+
           <!-- Signup Form -->
           <div class="signup-form">
             <div class="title">Register</div>
             <form id="registerForm">
               <div class="input-boxes">
                 <div class="input-box">
-                  <i class="fas fa-user"></i>
-                  <input type="text" id="registerName" placeholder="Enter college name" required>
+                  <i class="fas fa-university"></i>
+                  <select id="registerName" required>
+                    <!-- <option value="" disabled selected>Select College</option> -->
+                  </select>
                 </div>
                 <div class="input-box">
                   <i class="fas fa-envelope"></i>
-                  <input type="email" id="registerEmail" placeholder="Enter college email" required>
+                  <input
+                    type="email"
+                    id="registerEmail"
+                    placeholder="Enter college email"
+                    required
+                  />
                 </div>
                 <div class="input-box">
                   <i class="fas fa-lock"></i>
-                  <input type="password" id="registerPassword" placeholder="Enter your password" required>
+                  <input
+                    type="password"
+                    id="registerPassword"
+                    placeholder="Enter your password"
+                    required
+                  />
                 </div>
-                
                 <div class="button input-box">
-                  <input type="submit" value="Signup">
+                  <input type="submit" value="Signup" />
                 </div>
-                <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
+                <div class="text sign-up-text">
+                  Already have an account? <label for="flip">Login now</label>
+                </div>
               </div>
             </form>
           </div>
         </div>
+      </div>
     </div>
-  </div>
 
-  <!-- JavaScript -->
-  <script type="module" src="../js/script.js"></script>
-</body>
+    <!-- JavaScript -->
+
+   
+
+    <script type="module">
+      // // Firebase configuration
+      // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+      // import {
+      //   getDatabase,
+      //   ref,
+      //   get,
+      //   child,
+      // } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+      
+
+      // const firebaseConfig = {
+      //   apiKey: "AIzaSyDlYQQ502DzaJfdZQU4-Uw5m94tF5KYWBc",
+      //   authDomain: "student-assistance-chatbot.firebaseapp.com",
+      //   projectId: "student-assistance-chatbot",
+      //   storageBucket: "student-assistance-chatbot.firebasestorage.app",
+      //   messagingSenderId: "580188102556",
+      //   appId: "1:580188102556:web:f3b221ec0222495786b259",
+      //   measurementId: "G-1D5NCR4SFK",
+      // };
+
+      // // Initialize Firebase
+      // const app = initializeApp(firebaseConfig);
+      // const database = getDatabase(app);
+
+      // // Fetch college data from Firebase and populate the dropdown
+      // const registerNameDropdown = document.getElementById("registerName");
+      // const registerEmailInput = document.getElementById("registerEmail");
+
+      // async function fetchColleges() {
+      //   const dbRef = ref(database);
+      //   try {
+      //     const snapshot = await get(child(dbRef, "CollegesData"));
+      //     if (snapshot.exists()) {
+      //       const collegesData = snapshot.val();
+      //       registerNameDropdown.innerHTML =
+      //         '<option value="" disabled selected>Select College</option>';
+      //       for (const [collegeName, collegeInfo] of Object.entries(
+      //         collegesData
+      //       )) {
+      //         const option = document.createElement("option");
+      //         option.value = collegeName;
+      //         option.textContent = collegeName;
+      //         option.dataset.email = collegeInfo.email; // Assuming email is inside each college node
+      //         registerNameDropdown.appendChild(option);
+      //       }
+      //     } else {
+      //       console.error("No data available for collegesData");
+      //     }
+      //   } catch (error) {
+      //     console.error("Error fetching data from Firebase:", error);
+      //   }
+      // }
+
+      // // Update email input when a college is selected
+      // registerNameDropdown.addEventListener("change", (event) => {
+      //   const selectedOption = event.target.selectedOptions[0];
+      //   const email = selectedOption.dataset.email;
+      //   registerEmailInput.value = email || ""; // Set email if available
+      // });
+
+      // // Call fetchColleges to populate the dropdown on page load
+      // fetchColleges();
+    </script>
+     <script type="module" src="../js/Authentication.js"></script>
+     
+  </body>
 </html>

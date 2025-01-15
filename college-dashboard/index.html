@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Check if session is set
+            const isLoggedIn = sessionStorage.getItem("college-login");
+            const collegeName = sessionStorage.getItem("collegeName");
+            
+
+            if (!isLoggedIn) {
+                // Redirect to login page if session is not set
+                window.location.href = "../Auth/college-login.html";
+            } else {
+                // Display the college name
+                document.getElementById("collegeName").textContent = collegeName;
+            }
+        });
+
+        function logout() {
+            // Clear session storage
+            sessionStorage.removeItem("college-login");
+            sessionStorage.removeItem("collegeName");
+
+            // Redirect to login page
+            window.location.href = "../Auth/college-login.html";
+        }
+    </script>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Welcome, <span id="collegeName"></span></h1>
+        <p>This is the main college panel where you can manage your college-specific data.</p>
+        <a href="#" onclick="logout()">Logout</a>
+    </div>
+</body>
+</html>
