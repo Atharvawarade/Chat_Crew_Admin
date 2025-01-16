@@ -1,0 +1,53 @@
+.coolinput {
+    display: flex;
+    flex-direction: column;
+    position: static;
+}
+
+.coolinput label.text {
+    font-size: 1rem;
+    color: #1D3557;
+    font-weight: 700;
+    position: relative;
+    top: 0.5rem;
+    margin: 0 0 0 7px;
+    padding: 0 3px;
+    background: #ffffff;
+    width: fit-content;
+}
+
+.coolinput input {
+    padding: 11px 10px;
+    font-size: 1rem;
+    border: 2px #1D3557 solid;
+    border-radius: 5px;
+    /* background: #e8e8e8; */
+}
+
+.coolinput textarea {
+    padding: 11px 10px;
+    font-size: 1rem;
+    border: 2px #1D3557 solid;
+    border-radius: 5px;
+    /* background: #e8e8e8; */
+}
+
+.coolinput select {
+    padding: 11px 10px;
+    font-size: 1rem;
+    border: 2px #1D3557 solid;
+    border-radius: 5px;
+    /* background: #e8e8e8; */
+}
+
+
+
+.coolinput input[type=text].input:focus {
+    outline: none;
+}
+
+td .action_buttons{
+    gap: 10%;
+    align-items: center;
+    justify-content: space-between;
+}

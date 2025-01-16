@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct Upload to ImageKit.io</title>
+    <script src="https://unpkg.com/imagekit-javascript"></script> <!-- ImageKit SDK -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        img {
+            max-width: 200px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Direct File Upload to ImageKit.io</h1>
+    <form id="uploadForm">
+        <input type="file" id="fileInput" />
+        <button type="button" id="uploadBtn">Upload</button>
+    </form>
+    <div id="output"></div>
+
+    <script>
+        // Initialize ImageKit SDK with your public key and endpoint
+        const imagekit = new ImageKit({
+            publicKey: "your_public_api_key", // Replace with your public key
+            urlEndpoint: "https://ik.imagekit.io/your_imagekit_id/" // Replace with your endpoint
+        });
+
+        const uploadBtn = document.getElementById('uploadBtn');
+        const fileInput = document.getElementById('fileInput');
+        const output = document.getElementById('output');
+
+        uploadBtn.addEventListener('click', () => {
+            const file = fileInput.files[0];
+            if (!file) {
+                alert("Please select a file!");
+                return;
+            }
+
+            // Upload the file
+            imagekit.upload(
+                {
+                    file: file, // The file to upload
+                    fileName: file.name, // Optional: custom file name
+                },
+                (err, result) => {
+                    if (err) {
+                        console.error("Upload Error:", err);
+                        alert("Error uploading file. Please try again.");
+                    } else {
+                        console.log("File Uploaded Successfully:", result);
+
+                        // Display the uploaded file
+                        const fileUrl = result.url;
+                        if (file.type.startsWith("image/")) {
+                            output.innerHTML += `<img src="${fileUrl}" alt="${file.name}" />`;
+                        } else {
+                            output.innerHTML += `<p><a href="${fileUrl}" target="_blank">${file.name}</a></p>`;
+                        }
+                    }
+                }
+            );
+        });
+    </script>
+</body>
+</html>
