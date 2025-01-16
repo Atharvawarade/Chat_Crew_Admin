@@ -183,7 +183,7 @@ export default function loadDashboard(container) {
         const collegeRef = ref(db, "AdmissionDetails/" + collegeNodeName);
 
         await set(collegeRef, admissionData);
-        console.log("Data stored in Firebase successfully!");
+        console.log("Data stored in Firebase succesfully!");
 
         alert("Form submitted successfully!");
         document.getElementById("admissionForm").reset();
