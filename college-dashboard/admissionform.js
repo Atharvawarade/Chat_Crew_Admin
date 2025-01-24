@@ -59,7 +59,7 @@ export default function loadDashboard(container) {
           </div>
 
           <!-- Eligibility Criteria -->
-          <div class="col-md-12">
+          <div class="col-md-6">
             <div class="coolinput">
               <label for="eligibilityCriteria" class="text">Eligibility Criteria:</label>
               <textarea id="eligibilityCriteria" class="input" placeholder="Enter eligibility criteria" rows="4" required></textarea>
@@ -67,7 +67,7 @@ export default function loadDashboard(container) {
           </div>
 
           <!-- Admission Procedure -->
-          <div class="col-md-12">
+          <div class="col-md-6">
             <div class="coolinput">
               <label for="admissionProcedure" class="text">Admission Procedure:</label>
               <textarea id="admissionProcedure" class="input" placeholder="Enter admission procedure" rows="4" required></textarea>
@@ -91,7 +91,7 @@ export default function loadDashboard(container) {
           </div>
 
           <!-- Contact Details -->
-          <div class="col-md-12">
+          <div class="col-md-6">
             <div class="coolinput">
               <label for="contactDetails" class="text">Contact Details:</label>
               <textarea id="contactDetails" class="input" placeholder="Enter contact details" rows="3" required></textarea>
@@ -99,7 +99,7 @@ export default function loadDashboard(container) {
           </div>
 
           <!-- Additional Notes -->
-          <div class="col-md-12">
+          <div class="col-md-6">
             <div class="coolinput">
               <label for="additionalNotes" class="text">Additional Notes:</label>
               <textarea id="additionalNotes" class="input" placeholder="Add any additional notes" rows="4"></textarea>
@@ -116,7 +116,7 @@ export default function loadDashboard(container) {
 
           <!-- Submit Button -->
           <div class="mt-3">
-            <button type="submit" class="btn btn-primary w-100">Submit</button>
+            <button type="submit" class="btn btn-primary w-5">Submit</button>
           </div>
         </div>
       </form>
