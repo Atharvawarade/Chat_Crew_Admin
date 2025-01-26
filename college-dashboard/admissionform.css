@@ -50,6 +50,22 @@ mult-select-tag {
     /* background: #e8e8e8; */
 }
 
+.coolinput .teachingModes {
+    padding: 11px 10px;
+    font-size: 1rem;
+    border: 2px #1D3557 solid;
+    border-radius: 5px;
+    /* background: #e8e8e8; */
+}
+
+.coolinput  .examTypes{
+    padding: 11px 10px;
+    font-size: 1rem;
+    border: 2px #1D3557 solid;
+    border-radius: 5px;
+    /* background: #e8e8e8; */
+}
+
 .coolinput select {
     padding: 11px 10px !important;
     font-size: 1rem !important;
@@ -68,4 +84,8 @@ td .action_buttons{
     gap: 10%;
     align-items: center;
     justify-content: space-between;
+}
+
+.container{
+    margin-bottom: 10px;
 }

@@ -1,0 +1,7 @@
+[
+    {
+      "origin": ["http://localhost:80"],  // Adjust to your front-end URL
+      "method": ["GET", "POST", "PUT"],
+      "maxAgeSeconds": 3600
+    }
+  ]

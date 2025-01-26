@@ -30,10 +30,11 @@ cssLink.rel = "stylesheet";
 cssLink.href = "admissionform.css"; // Path to your CSS file
 document.head.appendChild(cssLink);
 
-export default function loadDashboard(container) {
+export default function loadAdmissionForm(container) {
   const html = `
-    <h1 style="text-align: center; margin-bottom: 20px;">Add College Admission Data</h1>
+    
     <div class="container">
+    <h5>Add College Admission Data</h5>
       <form id="admissionForm" enctype="multipart/form-data">
         <div class="row g-3">
           <!-- Institution Name -->

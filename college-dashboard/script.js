@@ -1,7 +1,13 @@
+// Import additional components
 import loadDashboard from "./components/dashboard.js";
-import loadadmissionform from "./components/admissionform.js";
+import loadAdmissionForm from "./components/admissionform.js";
 import loadSettings from "./components/settings.js";
 import loadReports from "./components/reports.js";
+import loadFeesStructure from "./components/feesstructure.js";
+import loadScholarshipDetails from "./components/scholarshipdetails.js";
+import loadPlacementDetails from "./components/placementdetails.js";
+import loadCurriculumDetails from "./components/curriculumdetails.js";
+import loadInfrastructureDetails from "./components/infrastructuredetails.js";
 
 const sidebarLinks = document.querySelectorAll("#sidebar a");
 const dynamicContent = document.getElementById("dynamicContent");
@@ -20,8 +26,23 @@ function loadPage(page, link) {
     case "dashboard":
       loadDashboard(dynamicContent);
       break;
-    case "institutions":
-      admissionform.js(dynamicContent);
+    case "admissionform":
+      loadAdmissionForm(dynamicContent);
+      break;
+    case "feesstructure":
+      loadFeesStructure(dynamicContent);
+      break;
+    case "scholarshipdetails":
+      loadScholarshipDetails(dynamicContent);
+      break;
+    case "placementdetails":
+      loadPlacementDetails(dynamicContent);
+      break;
+    case "curriculumdetails":
+      loadCurriculumDetails(dynamicContent);
+      break;
+    case "infrastructuredetails":
+      loadInfrastructureDetails(dynamicContent);
       break;
     case "settings":
       loadSettings(dynamicContent);
