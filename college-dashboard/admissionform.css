@@ -58,6 +58,23 @@ mult-select-tag {
     /* background: #e8e8e8; */
 }
 
+.coolinput .placementDriveDetails {
+    padding: 11px 10px;
+    font-size: 1rem;
+    border: 2px #1D3557 solid;
+    border-radius: 5px;
+    /* background: #e8e8e8; */
+}
+
+
+.coolinput #hostelAmenities {
+    padding: 11px 10px;
+    font-size: 1rem;
+    border: 2px #1D3557 solid;
+    border-radius: 5px;
+    /* background: #e8e8e8; */
+}
+
 .coolinput  .examTypes{
     padding: 11px 10px;
     font-size: 1rem;
@@ -89,3 +106,23 @@ td .action_buttons{
 .container{
     margin-bottom: 10px;
 }
+
+
+#hostelAmenities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between items */
+    margin-top: 2%;
+    /* margin-left: 2%; */
+  }
+  
+  .form-check {
+    flex-basis: calc(50% - 20px); /* Each item takes 50% width minus the gap */
+    display: flex;
+    align-items: center;
+  }
+  
+  .form-check-label {
+    margin-left: 5px; /* Space between checkbox and label */
+  }
+  

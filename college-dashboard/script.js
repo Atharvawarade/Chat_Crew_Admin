@@ -1,4 +1,3 @@
-// Import additional components
 import loadDashboard from "./components/dashboard.js";
 import loadAdmissionForm from "./components/admissionform.js";
 import loadSettings from "./components/settings.js";

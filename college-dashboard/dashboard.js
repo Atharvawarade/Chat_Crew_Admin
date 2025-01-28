@@ -8,8 +8,7 @@ import {
 const firebaseConfig = {
   apiKey: "AIzaSyDlYQQ502DzaJfdZQU4-Uw5m94tF5KYWBc",
   authDomain: "student-assistance-chatbot.firebaseapp.com",
-  databaseURL:
-    "https://student-assistance-chatbot-default-rtdb.firebaseio.com/",
+  databaseURL:"https://student-assistance-chatbot-default-rtdb.firebaseio.com/",
   projectId: "student-assistance-chatbot",
   storageBucket: "student-assistance-chatbot.appspot.com",
   messagingSenderId: "580188102556",
