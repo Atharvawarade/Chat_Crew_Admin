@@ -1,31 +1,31 @@
-.card {
+/* .card {
     position: relative;
-    overflow: hidden; /* Ensures no content overflows the card boundary */
-    /* background: linear-gradient(-120deg, #A8DADC, #F1FAEE); */
-    transition: all 0.3s ease-out; /* Smooth transition for hover effects */
-    border-radius: 8px; /* Optional for a softer card design */
-    /* padding: 20px; */
+    overflow: hidden; 
+   
+    transition: all 0.3s ease-out; 
+    border-radius: 8px; 
+
     border: 1.5px solid #1D3557;
   }
   
   .card img {
-    object-fit: cover; /* Ensures the image covers its container proportionally */
-    height: 100%; /* Makes the image take up the full height of its parent */
-    width: 100%; /* Makes the image take up the full width of its parent */
+    object-fit: cover; 
+    height: 100%; 
+    width: 100%; 
     border-radius: 4px;
   }
   
   .card-body {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centers content vertically */
-    height: 100%; /* Ensures card-body takes up the remaining space in the card */
+    justify-content: center; 
+    height: 100%; 
   }
   
   .card:hover {
     cursor: pointer;
-    transform: translateY(-5px); /* Slightly lifts the card */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Adds a shadow for emphasis */
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
     
   }
   
@@ -72,10 +72,24 @@
   
   .card:hover h5,
   .card:hover h3 {
-    color: #ffffff; /* Changes text color on hover */
+    color: #ffffff; 
     transition: all 0.3s ease-out;
   }
-  
+   */
+  .card-header{
+    background-color: #1D3557;
+    color: #ffffff;
+  }
+
+  .card{
+    border: 2px solid #1D3557;
+    color: #1D3557;
+  }
+
+  .card input, .card textarea{
+    border: 1px solid #1D3557;
+  }
+
   .modal-content {
     background-color: #f1f8ff; /* Soft blue background */
     border-radius: 8px;
