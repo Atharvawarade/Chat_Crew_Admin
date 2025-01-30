@@ -5,10 +5,11 @@ import {
   get,
 } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-database.js";
 
+// Firebase Configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDlYQQ502DzaJfdZQU4-Uw5m94tF5KYWBc",
   authDomain: "student-assistance-chatbot.firebaseapp.com",
-  databaseURL:"https://student-assistance-chatbot-default-rtdb.firebaseio.com/",
+  databaseURL: "https://student-assistance-chatbot-default-rtdb.firebaseio.com/",
   projectId: "student-assistance-chatbot",
   storageBucket: "student-assistance-chatbot.appspot.com",
   messagingSenderId: "580188102556",
@@ -16,224 +17,73 @@ const firebaseConfig = {
   measurementId: "G-1D5NCR4SFK",
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-// Inject the CSS file dynamically
+// Inject CSS
 const cssLink = document.createElement("link");
 cssLink.rel = "stylesheet";
-cssLink.href = "dashboard.css"; // Path to your CSS file
+cssLink.href = "dashboard.css";
 document.head.appendChild(cssLink);
 
 export default async function loadDashboard(container) {
+  const collegeName = sessionStorage.getItem("collegeName");
+
+  if (!collegeName) {
+    container.innerHTML = `<p class="text-center text-danger">No college name found in session.</p>`;
+    return;
+  }
+
+  const snapshot = await get(ref(db, `CollegesData/${collegeName}`));
+  if (!snapshot.exists()) {
+    container.innerHTML = `<p class="text-center text-danger">No college data found for ${collegeName}.</p>`;
+    return;
+  }
+
+  const data = snapshot.val();
+
   const html = `
-    <h1 style="text-align: center; margin-bottom: 20px;">Database Summary</h1>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-4 mb-3">
-          <div class="card" id="collegesCard">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="../assets/Institutions.jpg" class="img-fluid rounded-start" alt="Main Nodes Icon">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Institutions Registered</h5>
-                  <h3 class="card-text" id="innerNodesColleges">0</h3>
-                   <div class="go-corner" href="#">
-      <div class="go-arrow">
-        →
-      </div>
-    </div>
-                </div>
-              </div>
+    <div class="container mt-4">
+      <div class="row">
+        <!-- Left Column (Logo & Main Details) -->
+        <div class="col-md-8 text-center">
+          <h2 class="mt-3">${collegeName}</h2>
+          <p><strong>Tagline:</strong> ${data.tagline || "N/A"}</p>
+          <p><strong>Address:</strong> ${data.address || "N/A"}</p>
+          <p><strong>Phone:</strong> ${data.phoneNumber || "N/A"}</p>
+          <p><strong>Email:</strong> ${data.email || "N/A"}</p>
+          <p><strong>Website:</strong> <a href="${data.website || "#"}" target="_blank">${data.website || "N/A"}</a></p>
+        </div>
+        
+        <!-- Right Column (Image Slideshow & Map) -->
+        <div class="col-md-4">
+          <h4>Image Slideshow</h4>
+          <div id="slideshow" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              ${data.ImageSlideshow ? 
+                data.ImageSlideshow.map((img, index) => `
+                  <div class="carousel-item ${index === 0 ? "active" : ""}">
+                    <img src="${img}" class="d-block w-100" style="height: 200px; object-fit: cover;" alt="Slide ${index + 1}">
+                  </div>
+                `).join("")
+              : `<p>No images available.</p>`}
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#slideshow" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#slideshow" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
           </div>
-        </div>
-        <div class="col-md-4 mb-3">
-          <div class="card" id="mainNodesCard">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="../assets/Forms.jpg" class="img-fluid rounded-start" alt="Inner Nodes Icon">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Types of Documents</h5>
-                  <h3 class="card-text" id="mainNodesMinusOne">0</h3>
-                   <div class="go-corner" href="#">
-      <div class="go-arrow">
-        →
-      </div>
-    </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-3">
-          <div class="card" id="scholarshipsCard">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="../assets/Scholarships.jpg" class="img-fluid rounded-start" alt="Keys Icon">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Scholarships</h5>
-                  <h3 class="card-text" id="innerNodesScholarships">0</h3>
-                   <div class="go-corner" href="#">
-      <div class="go-arrow">
-        →
-      </div>
-    </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Modals -->
-    <div class="modal fade" id="collegesModal" tabindex="-1" aria-labelledby="collegesModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="collegesModalLabel">List of Colleges</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body" id="collegesList"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="mainNodesModal" tabindex="-1" aria-labelledby="mainNodesModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="mainNodesModalLabel">Names of Main Nodes</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body" id="mainNodesList"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="scholarshipsModal" tabindex="-1" aria-labelledby="scholarshipsModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="scholarshipsModalLabel">Scholarship Data</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body" id="scholarshipsList"></div>
+          <!-- Google Map Embed -->
+          <h4 class="mt-3">Location Map</h4>
+          ${data.map ? `<iframe src="${data.map}" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>` : `<p>No map available.</p>`}
         </div>
       </div>
     </div>
   `;
+
   container.innerHTML = html;
-
-  try {
-    // Fetch all data from the database
-    const dbRef = ref(db);
-    const snapshot = await get(dbRef);
-
-    if (snapshot.exists()) {
-      const data = snapshot.val();
-
-      // 1. Count inner nodes inside "CollegesData"
-      const collegesData = data.CollegesData || {};
-      const innerNodesColleges = Object.keys(collegesData).length;
-
-      // 2. Calculate main nodes - 1
-      const totalMainNodes = Object.keys(data).length;
-      const mainNodesMinusOne = totalMainNodes - 1;
-
-      // 3. Count inner nodes inside "ScholarshipData"
-      const scholarshipData = data.ScholarshipData || {};
-      const innerNodesScholarships = Object.keys(scholarshipData).length;
-
-      // Update card values
-      document.getElementById("innerNodesColleges").innerText =
-        innerNodesColleges;
-      document.getElementById("mainNodesMinusOne").innerText =
-        mainNodesMinusOne;
-      document.getElementById("innerNodesScholarships").innerText =
-        innerNodesScholarships;
-
-      // Modal event listeners
-      document.getElementById("collegesCard").addEventListener("click", () => {
-        const collegesList = Object.keys(collegesData)
-          .map((key, index) => `<tr><td>${index + 1}</td><td>${key}</td></tr>`)
-          .join("");
-      
-        document.getElementById(
-          "collegesList"
-        ).innerHTML = `
-          <table class="table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Institution Name</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${collegesList}
-            </tbody>
-          </table>
-        `;
-        new bootstrap.Modal(document.getElementById("collegesModal")).show();
-      });
-      
-      document.getElementById("mainNodesCard").addEventListener("click", () => {
-        const mainNodesList = Object.keys(data)
-          .map((key, index) => `<tr><td>${index + 1}</td><td>${key}</td></tr>`)
-          .join("");
-      
-        document.getElementById(
-          "mainNodesList"
-        ).innerHTML = `
-          <table class="table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Main Node</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${mainNodesList}
-            </tbody>
-          </table>
-        `;
-        new bootstrap.Modal(document.getElementById("mainNodesModal")).show();
-      });
-      
-      document.getElementById("scholarshipsCard").addEventListener("click", () => {
-        const scholarshipsList = Object.keys(scholarshipData)
-          .map((key, index) => `<tr><td>${index + 1}</td><td>${key}</td></tr>`)
-          .join("");
-      
-        document.getElementById(
-          "scholarshipsList"
-        ).innerHTML = `
-          <table class="table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Scholarship Name</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${scholarshipsList}
-            </tbody>
-          </table>
-        `;
-        new bootstrap.Modal(document.getElementById("scholarshipsModal")).show();
-      });
-      
-    } else {
-      console.log("No data available in the database.");
-    }
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
 }

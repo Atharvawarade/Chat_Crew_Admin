@@ -192,6 +192,7 @@ export default function loadProfileForm(container, collegeName) {
   get(profileRef).then((snapshot) => {
     if (snapshot.exists()) {
         const data = snapshot.val();
+        document.getElementById("collegeName").value = data.collegeName || "";
         document.getElementById("tagline").value = data.tagline || "";
         document.getElementById("about").value = data.about || "";
         document.getElementById("address").value = data.address || "";
@@ -277,6 +278,7 @@ export default function loadProfileForm(container, collegeName) {
 
     // Prepare profile data
     const profileData = {
+        collegeName: document.getElementById("collegeName").value,
         tagline: document.getElementById("tagline").value,
         about: document.getElementById("about").value,
         address: document.getElementById("address").value,
