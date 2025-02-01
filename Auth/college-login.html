@@ -10,8 +10,14 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      
+    </style>
   </head>
   <body>
+    <a href="../index.html" class="back-button">
+      <i class="fas fa-arrow-left"></i> 
+    </a>
     <div class="container">
       <input type="checkbox" id="flip" />
       <div class="cover">
@@ -115,75 +121,6 @@
       </div>
     </div>
 
-    <!-- JavaScript -->
-
-   
-
-    <script type="module">
-      // // Firebase configuration
-      // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
-      // import {
-      //   getDatabase,
-      //   ref,
-      //   get,
-      //   child,
-      // } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
-      
-
-      // const firebaseConfig = {
-      //   apiKey: "AIzaSyDlYQQ502DzaJfdZQU4-Uw5m94tF5KYWBc",
-      //   authDomain: "student-assistance-chatbot.firebaseapp.com",
-      //   projectId: "student-assistance-chatbot",
-      //   storageBucket: "student-assistance-chatbot.firebasestorage.app",
-      //   messagingSenderId: "580188102556",
-      //   appId: "1:580188102556:web:f3b221ec0222495786b259",
-      //   measurementId: "G-1D5NCR4SFK",
-      // };
-
-      // // Initialize Firebase
-      // const app = initializeApp(firebaseConfig);
-      // const database = getDatabase(app);
-
-      // // Fetch college data from Firebase and populate the dropdown
-      // const registerNameDropdown = document.getElementById("registerName");
-      // const registerEmailInput = document.getElementById("registerEmail");
-
-      // async function fetchColleges() {
-      //   const dbRef = ref(database);
-      //   try {
-      //     const snapshot = await get(child(dbRef, "CollegesData"));
-      //     if (snapshot.exists()) {
-      //       const collegesData = snapshot.val();
-      //       registerNameDropdown.innerHTML =
-      //         '<option value="" disabled selected>Select College</option>';
-      //       for (const [collegeName, collegeInfo] of Object.entries(
-      //         collegesData
-      //       )) {
-      //         const option = document.createElement("option");
-      //         option.value = collegeName;
-      //         option.textContent = collegeName;
-      //         option.dataset.email = collegeInfo.email; // Assuming email is inside each college node
-      //         registerNameDropdown.appendChild(option);
-      //       }
-      //     } else {
-      //       console.error("No data available for collegesData");
-      //     }
-      //   } catch (error) {
-      //     console.error("Error fetching data from Firebase:", error);
-      //   }
-      // }
-
-      // // Update email input when a college is selected
-      // registerNameDropdown.addEventListener("change", (event) => {
-      //   const selectedOption = event.target.selectedOptions[0];
-      //   const email = selectedOption.dataset.email;
-      //   registerEmailInput.value = email || ""; // Set email if available
-      // });
-
-      // // Call fetchColleges to populate the dropdown on page load
-      // fetchColleges();
-    </script>
      <script type="module" src="../js/Authentication.js"></script>
-     
   </body>
 </html>
