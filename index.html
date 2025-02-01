@@ -14,32 +14,60 @@
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"
     ></script>
+    <script
+      src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+      type="module"
+    ></script>
+
     <title>Chatbot Admin</title>
     <link rel="stylesheet" href="./css/index.css" />
+    <style>
+      .image-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      dotlottie-player {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+      }
+    </style>
   </head>
   <body>
+    <h1 class="glass-heading" style="margin-bottom: 10%;">Welcome to Chatbot Admin Page</h1>
     <div class="glass-container">
-      <!-- Heading added here -->
-      <h1 class="glass-heading">Welcome to DTE</h1>
-
+    
       <div class="container two-logins">
         <div class="row text-center">
-          <div class="col-6 col-sm-6 mb-4">
+          <div class="col-sm-12 col-md-6 col-xs-12 mb-4">
             <div class="image-container">
               <h3 class="image-heading">DTE Login</h3>
-              <img src="./assets/College1.png" alt="Login 1" />
+              <dotlottie-player
+                src="https://lottie.host/589d5cf4-43ac-4fb7-9b52-d05338c9fc9f/7aMtjH7HW4.lottie"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+              ></dotlottie-player>
               <button onclick="window.location.href='./Auth/admin-login.html';">
                 <span><strong>Select</strong></span>
-              </button>              
+              </button>
             </div>
           </div>
-          <div class="col-6 col-sm-6 mb-4">
+          <div class="col-sm-12 col-md-6 col-xs-12 mb-4">
             <div class="image-container">
               <h3 class="image-heading">College Login</h3>
-              <img src="./assets/College.png" alt="Login 2" />
+              <dotlottie-player
+                src="https://lottie.host/eabff0b5-b976-4ed5-9aed-8c96defda9d7/Ciq0dD9WyZ.lottie"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+              ></dotlottie-player>
               <button onclick="window.location.href='./Auth/college-login.html';">
                 <span><strong>Select</strong></span>
-              </button>     
+              </button>
             </div>
           </div>
         </div>
